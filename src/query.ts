@@ -38,7 +38,8 @@ async function main() {
 
         // Evaluate the specified transaction.
         // queryLandRegister
-        const result = await contract.evaluateTransaction('queryLandRegister', 'landRegister-Eutin-Malente-3323');
+        // const result = await contract.evaluateTransaction('queryAllLandRegisters', 'landRegister-Eutin-Malente-3323');
+        const result = await contract.evaluateTransaction('queryAllLandRegisters');
         console.log(`Transaction has been evaluated, result is: ${result.toString()}`);
 
     } catch (error) {

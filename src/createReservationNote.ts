@@ -37,7 +37,7 @@ async function main() {
         const contract = network.getContract('landregister');
 
         // InitLedger
-        const newLandRegister = '{' +
+        const reservationNoteRequest = '{' +
             '  "docType": "landRegister",' +
             '  "inventoryRegister": {' +
             '    "economicType": "Hof- und Gebaeudeflaeche",' +
@@ -60,7 +60,7 @@ async function main() {
             '      "title": "Mr"' +
             '    },' +
             '    {' +
-            '      "city": "Berlin",' +
+            '      "city": "a",' +
             '      "dateOfBirth": "16.07.1956",' +
             '      "firstname": "Monika",' +
             '      "identityNumber": "2",' +
@@ -71,15 +71,14 @@ async function main() {
             '      "title": "Mrs"' +
             '    }' +
             '  ],' +
-            '  "reservationNote": false,' +
             '  "titlePage": {' +
-            '    "districtCourt": "dc_1",' +
-            '    "landRegistryDistrict": "lrd_1",' +
-            '    "sheetNumber": "1"' +
+            '    "districtCourt": "asd",' +
+            '    "landRegistryDistrict": "Malente",' +
+            '    "sheetNumber": "3323"' +
             '  }' +
             '}';
-        await contract.submitTransaction('createLandRegister', newLandRegister);
-        console.log(`Transaction has been submitted`);
+        const result = await contract.submitTransaction('createReservationNote', reservationNoteRequest);
+        console.log(`Transaction has been submitted, result is: ${result.toString()}`);
 
         // Disconnect from the gateway.
         await gateway.disconnect();
